@@ -1,16 +1,14 @@
 const express = require('express')
 const router = express.Router()
 
-const taskController = require("../controller/user.controller")
+const userController = require("../controller/user.controller")
 
 router.route('/:id')
-    .patch(taskController.updateTask)
-    .delete(taskController.deleteTask)
+    .patch(userController.updateUser)
+    .delete(userController.deleteUser)
 
 router.route('/')
-    .get(taskController.getTask)
-    .post(taskController.addTask)
-
+    .get(userController.getUser)
 
 
 module.exports = router;
