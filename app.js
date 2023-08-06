@@ -2,25 +2,26 @@ const express = require('express')
 const cors = require('cors')
 var passport = require('passport');
 const app = express()
+const path =require('path')
 require("dotenv").config()
 const port = 3000
-
 
 
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 app.use(passport.initialize())
 
 require("./config/database")
 require("./config/passport")
 
 
-
-const taskManagement = require('./route/user.route')
+const users = require('./route/user.route')
 const authRoute = require('./route/auth.route')
 
-app.use("/userManagement", taskManagement)
+app.use("/users", users)
 app.use("/", authRoute)
 
 
@@ -57,8 +58,8 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({
         success: false,
-        message: err.message, 
-        error: err, 
+        message: err.message,
+        error: err,
     });
 })
 

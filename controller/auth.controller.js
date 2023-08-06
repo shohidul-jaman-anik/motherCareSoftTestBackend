@@ -3,6 +3,9 @@ var jwt = require('jsonwebtoken');
 const Auth = require('../models/auth.model');
 const saltRounds = 10;
 
+
+
+
 // Register  Route
 module.exports.registerUser = async (req, res) => {
     try {
