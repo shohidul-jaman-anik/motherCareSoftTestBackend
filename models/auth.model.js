@@ -2,8 +2,8 @@
 const mongoose = require('mongoose')
 
 const authSchema = mongoose.Schema({
-    name: {
-        type: String
+    name:{
+        type:String
     },
     username: {
         type: String,
